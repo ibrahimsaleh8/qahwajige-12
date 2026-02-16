@@ -1,0 +1,114 @@
+{
+  "projectId": "qahwaji-sa-services-12",
+  "name": "قهوجيين وصبابين الرياض",
+  "description": "أفضل خدمات القهوجيين والصبابين في الرياض لجميع المناسبات والفعاليات مع جودة عالية واحترافية.",
+  "isActive": true,
+  "siteSettings": {
+    "siteTitle": "قهوجيين وصبابين الرياض - خدمات ضيافة مميزة",
+    "siteDescription": "نوفر أفضل القهوجيين والصبابين في الرياض لتقديم القهوة والمشروبات في مناسباتكم وفعالياتكم بكل احترافية.",
+    "siteKeywords": [
+      "قهوجي بالرياض",
+      "صبابين بالرياض",
+      "خدمات ضيافة",
+      "قهوة عربية",
+      "قهوجيين للفعاليات"
+    ],
+    "phone": "+9660506142019",
+    "whatsapp": "+9660506142019",
+    "email": "info@qahwajialriyad.com",
+    "address": "الرياض – المملكة العربية السعودية",
+    "brandName": "قهوجيين وصبابين الرياض"
+  },
+  "heroSection": {
+    "headline": "أفضل",
+    "headlineHighlight": "قهوجيين وصبابين بالرياض",
+    "subheadline": "نوفر لك خدمات ضيافة مميزة لجميع مناسباتك وفعالياتك مع فريق محترف وتجهيز كامل للقهوة والمشروبات.",
+    "primaryCtaText": "اطلب الآن",
+    "primaryCtaLink": "#contact",
+    "secondaryCtaText": "تعرف على خدماتنا",
+    "secondaryCtaLink": "#services",
+    "backgroundImage": "/",
+    "isActive": true
+  },
+  "aboutSection": {
+    "label": "من نحن",
+    "title": "قهوجيين وصبابين بالرياض",
+    "description1": "نحن فريق محترف من القهوجيين والصبابين في الرياض، نقدم خدمات الضيافة للمناسبات والفعاليات بكل احترافية، مع تجهيز القهوة العربية والمشروبات الساخنة والباردة لضيوفك.",
+    "image": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1770752129/uploads/t23ypthog7jroytigxxp.jpg"
+  },
+  "servicesSection": {
+    "label": "خدماتنا",
+    "title": "ما نقدمه لك",
+    "description": "نحن نقدم خدمات متكاملة لضمان تجربة ضيافة لا تُنسى لجميع مناسباتك.",
+    "services": [
+      {
+        "icon": "Coffee",
+        "title": "قهوجيين محترفين",
+        "description": "فريق من القهوجيين المحترفين يقدم القهوة العربية والمشروبات الساخنة بطريقة احترافية."
+      },
+      {
+        "icon": "Users",
+        "title": "صبابين ومشروبات متنوعة",
+        "description": "توفير صبابين لتقديم المشروبات الساخنة والباردة حسب طلبك وبأعلى جودة."
+      },
+      {
+        "icon": "Heart",
+        "title": "خدمات للمناسبات والفعاليات",
+        "description": "نوفر خدمات الضيافة للمناسبات الصغيرة والكبيرة مع تنظيم كامل وتجهيز المكان."
+      }
+    ]
+  },
+  "whyUsSection": {
+    "label": "لماذا نحن",
+    "title": "ما يميز خدماتنا",
+    "description": "اختيارنا يعني جودة، احترافية، وسرعة في تقديم أفضل خدمات القهوجيين والصبابين في الرياض.",
+    "features": [
+      {
+        "icon": "Award",
+        "title": "احترافية عالية",
+        "description": "فريق مؤهل وذو خبرة في تقديم خدمات الضيافة والمشروبات."
+      },
+      {
+        "icon": "Clock",
+        "title": "مرونة وسرعة",
+        "description": "نقدم خدماتنا حسب جدولك واحتياجات مناسبتك بسرعة وكفاءة."
+      },
+      {
+        "icon": "Sparkles",
+        "title": "رضا العملاء",
+        "description": "نحرص على تجربة مميزة لضيوفك ورضا كامل لجميع عملائنا."
+      }
+    ]
+  },
+  "contactSection": {
+    "label": "تواصل معنا",
+    "title": "اطلب خدمات القهوجيين والصبابين الآن",
+    "description": "تواصل معنا عبر الهاتف، واتساب، البريد الإلكتروني أو زر موقعنا في الرياض لتنظيم مناسبتك بكل احترافية."
+  },
+  "galleryImages": [
+    {
+      "url": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1770752129/uploads/t23ypthog7jroytigxxp.jpg",
+      "alt": "قهوجي يقدم القهوة العربية"
+    },
+    {
+      "url": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1770553368/uploads/jgbozwvy234vijcrhli7.jpg",
+      "alt": "صبابين يقدم المشروبات للضيوف"
+    },
+    {
+      "url": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1770552988/uploads/hbverf47nmivxrn8rgwk.jpg",
+      "alt": "خدمة ضيافة متكاملة في مناسبة"
+    },
+    {
+      "url": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1769771207/projects/cml0pt2jr0000rgu50g370mil/gallery/gnidbnplcjhlta1syeah.jpg",
+      "alt": "قهوجي مناسبات يقدم القهوة العربية الأصيلة"
+    },
+    {
+      "url": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1769771166/projects/cml0pt2jr0000rgu50g370mil/gallery/pmfdjkwnzsp6q0xhha62.jpg",
+      "alt": "قهوجي الرياض لفعاليات الشركات والمؤتمرات"
+    },
+    {
+      "url": "https://res.cloudinary.com/dg8bbwiu5/image/upload/v1769771144/projects/cml0pt2jr0000rgu50g370mil/gallery/fikakg7deae8cngjeosh.jpg",
+      "alt": "قهوجي حفلات زفاف يقدم ضيافة قهوة عربية فاخرة"
+    }
+  ]
+}
