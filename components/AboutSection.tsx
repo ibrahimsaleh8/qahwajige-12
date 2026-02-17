@@ -7,6 +7,7 @@ const iconMap: Record<string, LucideIcon> = {
   Shield,
   Sparkles,
 };
+
 export default function AboutSection({
   description1,
   label,
@@ -18,70 +19,95 @@ export default function AboutSection({
   whyUsDescription: string;
 }) {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-second-bg">
-      <div
-        className="absolute inset-0 z-0 pointer-events-none"
-        style={{
-          backgroundImage: `
-          repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 20px),
-        repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 20px)
-        `,
-          backgroundSize: "40px 40px",
-        }}
-      />
+    <section id="about" dir="rtl" className="py-24 relative overflow-hidden">
+      {/* Ambient glow orbs */}
+      <div className="pointer-events-none absolute top-[-20%] right-[-10%] w-130 h-130 rounded-full bg-cyan-400/6 blur-[110px]" />
+      <div className="pointer-events-none absolute bottom-[-15%] left-[-12%] w-100 h-100 rounded-full bg-indigo-600/[0.07] blur-[90px]" />
 
-      <div className="container mx-auto px-4 relative z-10 flex gap-10 justify-between lg:flex-row flex-col-reverse">
-        <div className="w-full">
-          {/* Section Header */}
-          <div className="text-center mb-14">
-            {label && (
-              <p className="flex text-orange-500 items-center justify-center w-fit mx-auto text-lg font-bold px-4 py-1.5 mb-4">
-                {label}
-              </p>
-            )}
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* ── Section Header ── */}
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          {/* Badge pill */}
+          {label && (
+            <span className="inline-flex items-center gap-2 px-4.5 py-1.5 rounded-full bg-cyan-400/8 border border-cyan-400/25 text-cyan-400 text-[0.78rem] font-bold tracking-wider mb-5">
+              {label}
+            </span>
+          )}
+
+          {/* Title */}
+          <h2
+            className="font-bold leading-tight"
+            style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)" }}>
+            <span className="text-[#C7CBEF] [text-shadow:0_0_20px_rgba(199,203,239,0.25)]">
               {title}
-            </h2>
-            <p className="text-low-color text-lg max-w-3xl mx-auto leading-relaxed">
-              {description1}
-            </p>
+            </span>
+          </h2>
 
-            <p className="text-low-color text-lg max-w-3xl mx-auto leading-relaxed mt-4">
+          {/* Descriptions */}
+          <p className="mt-4 text-white/50 text-base leading-[1.85] max-w-2xl mx-auto">
+            {description1}
+          </p>
+          {whyUsDescription && (
+            <p className="mt-3 text-white/40 text-sm leading-[1.85] max-w-2xl mx-auto">
               {whyUsDescription}
             </p>
-          </div>
-
-          {features && features.length > 0 && (
-            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto">
-              {features.map((item, index) => {
-                const Icon = iconMap[item.icon as keyof typeof iconMap];
-
-                return (
-                  <div
-                    key={item.title}
-                    className="relative group bg-main-background border border-white/10 text-black hover:border-main-color/60 p-8 text-center shadow-sm hover:shadow-luxury transition-all duration-300">
-                    <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-main-color group-hover:bg-main-color/90 duration-300 transition-colors">
-                      {Icon && (
-                        <Icon className="w-7 h-7 text-white group-hover:scale-105 transition-transform" />
-                      )}
-                    </div>
-                    <p className="absolute right-4 top-4 text-white/10 text-7xl font-bold">
-                      {index + 1}
-                    </p>
-
-                    <h3 className="text-lg font-bold text-white mb-2">
-                      {item.title}
-                    </h3>
-
-                    <p className="text-low-color text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
           )}
+
+          {/* Gradient divider */}
+          <div className="w-20 h-0.5 mx-auto mt-7 rounded-full bg-linear-to-l from-transparent via-cyan-400 to-transparent" />
         </div>
+
+        {/* ── Feature Cards ── */}
+        {features && features.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {features.map((item, index) => {
+              const Icon = iconMap[item.icon as keyof typeof iconMap];
+
+              return (
+                <div
+                  key={item.title}
+                  className="
+                    group relative
+                    bg-slate-800/40 backdrop-blur-xl
+                    border border-white/8 border-t-white/[0.14]
+                    rounded-[18px] p-8 text-right
+                    shadow-[0_4px_30px_rgba(0,0,0,0.2)]
+                    hover:border-cyan-400/30
+                    hover:shadow-[0_12px_44px_rgba(0,0,0,0.4),0_0_18px_rgba(34,211,238,0.09)]
+                    hover:-translate-y-1.25
+                    transition-all duration-380 ease-out
+                    overflow-hidden
+                  ">
+                  {/* Top cyan accent line */}
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-linear-to-l from-transparent via-cyan-400/0 to-transparent group-hover:via-cyan-400/60 transition-all duration-500" />
+
+                  {/* Ghost number */}
+                  <span className="absolute top-3 left-4 text-[5.5rem] font-black leading-none text-white/40 select-none pointer-events-none">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Icon badge */}
+                  <div className="w-14 h-14 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-400/16 group-hover:shadow-[0_0_16px_rgba(34,211,238,0.25)] transition-all duration-300">
+                    {Icon && <Icon className="w-6 h-6" />}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-[#C7CBEF] mb-2 leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* Divider */}
+                  <div className="h-px mb-4 bg-linear-to-l from-transparent via-white/[0.07] to-transparent" />
+
+                  {/* Description */}
+                  <p className="text-sm text-white/50 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </section>
   );

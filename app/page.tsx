@@ -12,6 +12,7 @@ import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
 import { ProjectContentResponse } from "@/lib/responseType";
 import FloatedIcons from "@/components/FloatedIcons";
 import RatingSection from "@/components/RatingSection";
+import WhyUsDescription from "@/components/WhyUsDescription";
 
 export default async function HomePage() {
   let data;
@@ -46,9 +47,7 @@ export default async function HomePage() {
     <div className="min-h-screen overflow-x-hidden">
       <Header brandName={data.header.brandName} telephone={data.footer.phone} />
       <HeroSection {...data.hero} aboutImage={data.about.image ?? ""} />
-      <h2 className="p-20 text-center bg-card-background lg:text-7xl md:text-5xl text-3xl font-medium text-main-color">
-        {data.whyUs.description ?? ""}
-      </h2>
+      <WhyUsDescription description={data.whyUs.description ?? ""} />
       <AboutSection
         {...data.about}
         features={data.whyUs.features}

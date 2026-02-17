@@ -47,14 +47,19 @@ html {
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  --main-background: #1e1a18;
-  --second-background: #141210;
-  --main-black: #332822;
-  --main-color: #cc5818;
-  --main-color-dark: #6b4e2f;
-  --secondary-accent: #8b7d72;
-  --low-color: #bfbdb6;
-  --card-background: #2d2622;
+  /* -------------------- */
+  --main-background: #0f172a; /* midnight */
+  --second-background: #020617; /* darker midnight (optional depth) */
+  --card-background: rgba(255, 255, 255, 0.03); /* glass */
+
+  /* Text / Neutral */
+  --main-black: #e5e7eb; /* silver (primary text) */
+  --low-color: #94a3b8; /* muted text (slate) */
+  --secondary-accent: #c7cbef; /* lavender */
+
+  /* Accent / Brand */
+  --main-color: #22d3ee; /* cyan (primary action color) */
+  --main-color-dark: #0891b2; /* darker cyan */
 }
 
 body {
@@ -138,8 +143,8 @@ body {
   height: 600px;
   background: radial-gradient(
     circle,
-    rgba(204, 88, 24, 0.45) 0%,
-    rgba(30, 26, 24, 0) 70%
+    rgba(34, 211, 238, 0.35) 0%,
+    /* cyan */ rgba(15, 23, 42, 0) 70% /* midnight */
   );
   z-index: 0;
   pointer-events: none;

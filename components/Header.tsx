@@ -23,8 +23,8 @@ export function Header({
 
   return (
     <header
-      className={`fixed xl:w-3/4 lg:w-[90%] bg-[#2d262299] backdrop-blur-2xl top-1 border border-[#ffffff14] left-0 rounded-full mx-auto right-0 z-50 transition-all duration-300`}>
-      <div className="container mx-auto px-4">
+      className={`fixed container bg-[#2d262299] backdrop-blur-2xl md:top-1 top-0 border border-[#ffffff14] left-0 md:rounded-full mx-auto right-0 z-50 transition-all duration-300`}>
+      <div className="container mx-auto md:px-4 px-1">
         <div className="flex items-center justify-between h-20">
           {/* Logo - Left */}
           <Link
@@ -63,7 +63,24 @@ export function Header({
             <a
               target="_blank"
               href={`tel:${telephone}`}
-              className="bg-[#f2efe9] hover:opacity-80 text-black md:px-6 md:py-3 px-4 py-2 text-sm md:text-base rounded-full shadow-lg transition-all">
+              rel="noopener noreferrer"
+              className="
+            relative inline-flex items-center gap-3
+            rounded-full px-6 py-2.5 text-sm font-bold
+            text-cyan-400
+            border border-cyan-400/30
+            bg-cyan-400/10
+            backdrop-blur
+            overflow-hidden
+            transition-all duration-300
+            hover:bg-cyan-400
+            hover:text-midnight
+            hover:border-cyan-400
+            hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]
+            hover:text-black
+          ">
+              {/* top highlight */}
+              <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-white/10 to-transparent rounded-t-full" />
               احجز الآن
             </a>
           </div>
@@ -76,7 +93,7 @@ export function Header({
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-card-background mt-1 rounded-2xl fixed w-full">
+            className="lg:hidden bg-main-background border border-white/40 mt-1 rounded-2xl fixed w-full">
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-4">
               {navLinks.map((link) => (
                 <Link
