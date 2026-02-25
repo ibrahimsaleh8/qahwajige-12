@@ -13,6 +13,7 @@ export type ProjectContentResponse = {
     averageRating: number;
     totalRatings: number;
   };
+  keywords: string[];
 };
 
 // Header & Footer

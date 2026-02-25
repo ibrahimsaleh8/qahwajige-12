@@ -1,17 +1,23 @@
+"use client";
+
 export default function HeroBackground() {
   return (
     <>
-      {/* Ambient Orbs (static on first paint) */}
-      <div className="pointer-events-none absolute -top-40 -left-32 w-175 h-175 rounded-full bg-cyan-400/8 blur-[130px]" />
-      <div className="pointer-events-none absolute -bottom-32 -right-32 w-125 h-125 rounded-full bg-indigo-600/8 blur-[100px]" />
-
-      {/* Grid texture */}
+      {/* Gradient mesh — warmer coffee tone + cyan */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 80% 60% at 20% 40%, rgba(34, 211, 238, 0.06) 0%, transparent 50%), radial-gradient(ellipse 70% 50% at 80% 60%, rgba(180, 83, 9, 0.04) 0%, transparent 50%), radial-gradient(ellipse 100% 80% at 50% 100%, rgba(15, 23, 42, 0.9) 0%, transparent 60%)",
+        }}
+      />
+      {/* Soft grid */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+            "linear-gradient(rgba(255,255,255,.4) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.4) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
         }}
       />
     </>

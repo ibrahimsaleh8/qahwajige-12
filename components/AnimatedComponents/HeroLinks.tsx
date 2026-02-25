@@ -1,62 +1,39 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { FaArrowLeft } from "react-icons/fa";
+import { motion } from "motion/react";
+import { FaWhatsapp } from "react-icons/fa";
+import { ImageIcon } from "lucide-react";
 
 export default function HeroLinks({ whatsApp }: { whatsApp?: string }) {
+  const waNum = whatsApp?.replace(/\+/g, "") ?? "";
+  const waLink = waNum
+    ? `https://wa.me/${waNum}?text=مرحباً، أود الاستفسار عن خدمات قهوجى الرياض`
+    : "#contact";
+
   return (
-    <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-      {whatsApp && (
+    <div className="flex flex-wrap gap-3 pt-2">
+      {waNum && (
         <motion.a
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
           target="_blank"
-          rel="noopener noreferrer"
-          href={`https://wa.me/${whatsApp.replace(/\+/g, "")}?text=`}
-          className="
-            relative inline-flex items-center gap-3
-            rounded-full px-8 py-3 text-sm font-bold
-            text-cyan-400
-            border border-cyan-400/30
-            bg-cyan-400/10
-            backdrop-blur
-            overflow-hidden
-            transition-all duration-300
-            hover:bg-cyan-400
-            hover:text-midnight
-            hover:border-cyan-400
-            hover:shadow-[0_0_20px_rgba(34,211,238,0.4)]
-            hover:text-black
-          ">
-          {/* top highlight */}
-          <span className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-linear-to-b from-white/10 to-transparent rounded-t-full" />
-          اطلب الخدمة الآن
-          <FaArrowLeft />
+          href={waLink}
+          className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold bg-green-700 text-white hover:bg-green-600 shadow-lg hover:shadow-emerald-500/25 transition-all">
+          <FaWhatsapp className="w-5 h-5" />
+          واتساب — احجز الآن
         </motion.a>
       )}
-
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.1, ease: "easeInOut" }}
-        viewport={{ once: true }}>
+        transition={{ duration: 0.4, delay: 0.08 }}>
         <Link
-          href="#gallery"
-          className="
-            relative inline-flex items-center gap-3
-            rounded-full px-8 py-3 text-sm font-bold
-            text-silver
-            border border-white/10
-            bg-white/5
-            backdrop-blur
-            transition-all duration-300
-            hover:bg-white/10
-            hover:text-white
-          ">
-          عرض معرض الأعمال
+          href="#services"
+          className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 text-sm font-bold border border-white/15 bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white transition-all">
+          <ImageIcon className="w-4 h-4" />
+          خدماتنا
         </Link>
       </motion.div>
     </div>

@@ -6,11 +6,23 @@ const mapEmbedSrc =
   "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7247.733529263881!2d46.7653!3d24.731454!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f013bec0d4b7b%3A0xeb4d9048d7b13647!2z2YLZh9mI2KzZiiDZiNi12KjYp9io2YrZhiDZgtmH2YjYqSDYp9mE2LHZitin2LY!5e0!3m2!1sar!2str!4v1728329118756!5m2!1sar!2str";
 
 const footerLinks = [
-  { name: "الرئيسية", href: "#home" },
-  { name: "عن الشركة", href: "#about" },
-  { name: "خدماتنا", href: "#services" },
-  { name: "الأسئلة الشائعة", href: "#faq" },
-  { name: "اتصل بنا", href: "#contact" },
+  { name: "الرئيسية", href: "/#main-section" },
+  { name: "من نحن", href: "/#about-us" },
+  { name: "مناسباتنا", href: "/#events" },
+  { name: "كيف نعمل", href: "/#how-it-works" },
+  { name: "الباقات", href: "/#packages" },
+  { name: "الأسئلة الشائعة", href: "/#faq-section" },
+  { name: "اتصل بنا", href: "/#contact-information" },
+];
+
+/** Keyword-style links — all point to #services for SEO/navigation */
+const servicesKeywords = [
+  "خدماتنا",
+  "خدمة القهوة العربية",
+  "ضيافة الرياض",
+  "صبّابون قهوة",
+  "خدمات مناسبات",
+  "قهوة عربية الرياض",
 ];
 
 export default function Footer({
@@ -32,7 +44,7 @@ export default function Footer({
 
       {/* ── Main grid ── */}
       <div className="relative z-10 container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1 flex flex-col gap-5">
             <Link
@@ -64,6 +76,25 @@ export default function Footer({
                     className="group flex items-center gap-2 text-white/80 hover:text-cyan-400 transition-colors duration-200 text-sm">
                     <span className="w-1 h-1 rounded-full bg-cyan-400/40 group-hover:bg-cyan-400 group-hover:shadow-[0_0_6px_rgba(34,211,238,0.7)] transition-all duration-200 shrink-0" />
                     {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* خدماتنا — keyword links to #services */}
+          <div className="flex flex-col gap-5">
+            <p className="text-[#C7CBEF] font-bold text-base tracking-wide">
+              خدماتنا
+            </p>
+            <ul className="space-y-3">
+              {servicesKeywords.map((label) => (
+                <li key={label}>
+                  <Link
+                    href="/#services"
+                    className="group flex items-center gap-2 text-white/80 hover:text-cyan-400 transition-colors duration-200 text-sm">
+                    <span className="w-1 h-1 rounded-full bg-cyan-400/40 group-hover:bg-cyan-400 group-hover:shadow-[0_0_6px_rgba(34,211,238,0.7)] transition-all duration-200 shrink-0" />
+                    {label}
                   </Link>
                 </li>
               ))}
@@ -135,7 +166,7 @@ export default function Footer({
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="موقع قهوجيين الرياض على الخريطة"
+                  title="موقع قهوجى الرياض على الخريطة"
                   className="w-full h-full border-0 opacity-80 hover:opacity-100 transition-opacity duration-300"
                 />
               </div>

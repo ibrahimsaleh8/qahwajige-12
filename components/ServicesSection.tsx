@@ -1,5 +1,6 @@
-import { ServicesSectionData } from "@/lib/responseType";
+import { ServicesSectionData, GalleryImageData } from "@/lib/responseType";
 import { Coffee, Users, Heart, Building2, LucideIcon } from "lucide-react";
+import { InlineGallery } from "./InlineGallery";
 
 const iconMap: Record<string, LucideIcon> = {
   Coffee,
@@ -11,99 +12,96 @@ const iconMap: Record<string, LucideIcon> = {
 export default function ServicesSection({
   description,
   items,
-  label,
   title,
-}: ServicesSectionData) {
+  gallery = [],
+}: ServicesSectionData & { gallery?: GalleryImageData[] }) {
+  const list =
+    items && items.length > 0
+      ? items
+      : [
+          {
+            id: "1",
+            icon: "Coffee",
+            title: "تقديم القهوة العربية",
+            description: "تقديم راقٍ بالدلة والفناجيل مع صبّابين محترفين.",
+          },
+          {
+            id: "2",
+            icon: "Users",
+            title: "صبّابون محترفون",
+            description: "فريق مدرب على أعلى معايير الضيافة والسلوك.",
+          },
+          {
+            id: "3",
+            icon: "Heart",
+            title: "مستلزمات الضيافة",
+            description: "دلال، فناجيل، صواني وكل ما يلزم لتقديم ضيافة كاملة.",
+          },
+          {
+            id: "4",
+            icon: "Building2",
+            title: "جميع المناسبات",
+            description: "أعراس، اجتماعات، مناسبات عائلية وفعاليات في الرياض.",
+          },
+        ];
+
   return (
-    <section id="services" dir="rtl" className="py-24 relative overflow-hidden">
-      {/* Ambient glow orbs */}
-      <div className="pointer-events-none absolute top-[-15%] left-[-10%] w-135 h-135 rounded-full bg-cyan-400/6 blur-[110px]" />
-      <div className="pointer-events-none absolute bottom-[-15%] right-[-10%] w-100 h-100 rounded-full bg-indigo-600/[0.07] blur-[90px]" />
+    <section
+      id="our-services"
+      className="py-20 sm:py-28 relative overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-125 h-125 rounded-full bg-cyan-500/5 blur-[130px]" />
+      <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-indigo-500/5 blur-[100px]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* ── Section Header ── */}
-        <div className="text-center mb-16 max-w-2xl mx-auto">
-          {label && (
-            <span className="inline-flex items-center gap-2 px-4.5 py-1.5 rounded-full bg-cyan-400/8 border border-cyan-400/25 text-cyan-400 text-[0.78rem] font-bold tracking-wider mb-5">
-              {label}
-            </span>
-          )}
-
-          <h2
-            className="font-bold leading-tight"
-            style={{ fontSize: "clamp(1.8rem, 5vw, 2.8rem)" }}>
-            <span className="text-[#C7CBEF] [text-shadow:0_0_20px_rgba(199,203,239,0.25)]">
-              {title}
-            </span>
-          </h2>
-
-          <p className="mt-3 text-white/50 text-base leading-[1.85] max-w-xl mx-auto">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
+        <header className="text-center max-w-2xl mx-auto mb-14">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white">{title}</h2>
+          <p className="mt-3 text-slate-400 text-sm leading-relaxed">
             {description}
           </p>
+        </header>
 
-          <div className="w-20 h-0.5 mx-auto mt-6 rounded-full bg-linear-to-l from-transparent via-cyan-400 to-transparent" />
-        </div>
-
-        {/* ── Service Cards ── */}
-        {items && items.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {items.map((card, index) => {
-              const Icon = iconMap[card.icon as keyof typeof iconMap] || Coffee;
-
-              return (
-                <div
-                  key={card.title}
-                  className="
-                    group relative
-                    bg-slate-800/40 backdrop-blur-xl
-                    border border-white/8 border-t-white/[0.14]
-                    rounded-[18px] p-8 text-right
-                    flex flex-col
-                    shadow-[0_4px_30px_rgba(0,0,0,0.2)]
-                    hover:border-cyan-400/30
-                    hover:shadow-[0_12px_44px_rgba(0,0,0,0.4),0_0_18px_rgba(34,211,238,0.09)]
-                    hover:-translate-y-1.25
-                    transition-all duration-380 ease-out
-                    overflow-hidden
-                  ">
-                  {/* Top cyan accent line */}
-                  <div className="absolute top-0 inset-x-0 h-0.5 bg-linear-to-l from-transparent via-cyan-400/0 to-transparent group-hover:via-cyan-400/60 transition-all duration-500" />
-
-                  {/* Ghost number */}
-                  <span className="absolute top-3 left-4 text-[5.5rem] font-black leading-none text-white/40 select-none pointer-events-none">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  {/* Icon badge */}
-                  <div className="w-14 h-14 rounded-2xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 mb-6 group-hover:scale-110 group-hover:bg-cyan-400/16 group-hover:shadow-[0_0_16px_rgba(34,211,238,0.25)] transition-all duration-300">
-                    <Icon className="w-6 h-6" />
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-[#C7CBEF] mb-2 leading-snug">
+        {/* Bento-style grid: first item large, rest in 2x2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {list.slice(0, 1).map((card) => {
+            const Icon = iconMap[card.icon as keyof typeof iconMap] ?? Coffee;
+            return (
+              <article
+                key={card.id ?? card.title}
+                className="md:col-span-2 rounded-2xl border border-white/10 bg-slate-800/40 p-8 flex flex-col sm:flex-row gap-6 items-start hover:border-cyan-500/25 hover:bg-slate-800/60 transition-all">
+                <div className="shrink-0 w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                  <Icon className="w-8 h-8" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-white mb-2">
                     {card.title}
                   </h3>
-
-                  {/* Inner divider */}
-                  <div className="h-px mb-4 bg-linear-to-l from-transparent via-white/[0.07] to-transparent" />
-
-                  {/* Description */}
-                  <p className="text-sm text-white/50 leading-relaxed flex-1">
+                  <p className="text-slate-400 text-sm leading-relaxed max-w-2xl">
                     {card.description}
                   </p>
-
-                  {/* Footer tag */}
-                  <div className="flex items-center gap-2 mt-6 pt-5 border-t border-white/6">
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_6px_rgba(34,211,238,0.7)] shrink-0" />
-                    <span className="text-xs text-white/30 font-medium">
-                      خدمة متكاملة وفق أعلى المعايير
-                    </span>
-                  </div>
                 </div>
-              );
-            })}
-          </div>
-        )}
+              </article>
+            );
+          })}
+          {list.slice(1).map((card) => {
+            const Icon = iconMap[card.icon as keyof typeof iconMap] ?? Coffee;
+            return (
+              <article
+                key={card.id ?? card.title}
+                className="rounded-2xl border border-white/10 bg-slate-800/30 p-6 flex gap-4 hover:border-cyan-500/20 hover:bg-slate-800/50 transition-all">
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  <Icon className="w-6 h-6" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-white mb-1">{card.title}</h3>
+                  <p className="text-white/70 text-xs leading-relaxed">
+                    {card.description}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+        <InlineGallery images={gallery} title="من مناسباتنا — خدمات الضيافة" />
       </div>
     </section>
   );

@@ -1,14 +1,13 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import { Cairo } from "next/font/google";
+import { Tajawal } from "next/font/google";
 import "./globals.css";
 import { APP_URL, CurrentProjectId, currentURL } from "@/lib/ProjectId";
-import { StructuredData } from "@/components/StructuredData";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 
-const cairoFont = Cairo({
-  weight: ["1000", "200", "300", "400", "500", "600", "700", "800", "900"],
+const tajawalFont = Tajawal({
+  weight: ["200", "300", "400", "500", "700", "800", "900"],
   subsets: ["arabic"],
 });
 type MetaDataResponseDataType = {
@@ -30,38 +29,26 @@ export async function generateMetadata(): Promise<Metadata> {
     );
     const data: MetaDataResponseDataType = await res.json();
 
-    const title = data.title;
-    const description = data.description;
-    const brandName = data.brandName;
-    const keywords = data.keywords;
-
     return {
-      title,
-      description,
-      keywords,
-      creator: brandName,
-      publisher: brandName,
+      title: data.title,
+      description: data.description,
+      keywords: data.keywords,
+      creator: data.brandName,
+      publisher: data.brandName,
       openGraph: {
-        title,
-        description,
+        title: data.title,
+        description: data.description,
         type: "website",
         locale: "ar_SA",
-        siteName: brandName,
+        siteName: data.brandName,
       },
-      twitter: {
-        card: "summary_large_image",
-        title,
-        description,
-      },
+
       robots: {
         index: true,
         follow: true,
         googleBot: {
           index: true,
           follow: true,
-          "max-video-preview": -1,
-          "max-image-preview": "large",
-          "max-snippet": -1,
         },
       },
       alternates: {
@@ -74,8 +61,9 @@ export async function generateMetadata(): Promise<Metadata> {
   } catch (error) {
     console.error("Metadata fetch failed:", error);
     return {
-      title: "قهوجيين الرياض",
-      description: "خدمات الضيافة العربية في الرياض",
+      title: "قهوجى الرياض — خدمة القهوة العربية والضيافة في الرياض",
+      description:
+        "قهوجى الرياض: تقديم القهوة العربية والضيافة في الرياض. صبّابون محترفون، مستلزمات راقية، أعراس ومناسبات. احجز الآن.",
     };
   }
 }
@@ -85,21 +73,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const res = await fetch(
-    `${APP_URL}/api/project/${CurrentProjectId}/metadata`,
-  );
-  const data: MetaDataResponseDataType = await res.json();
-
   return (
     <html lang="ar" dir="rtl">
-      <head>
-        <StructuredData
-          name={data.brandName}
-          description={data.description}
-          url={process.env.NEXT_PUBLIC_APP_URL as string}
-        />
-      </head>
-      <body className={`${cairoFont.className} antialiased`}>
+      <body className={`${tajawalFont.className} antialiased`}>
         {children}
         <Analytics />
 

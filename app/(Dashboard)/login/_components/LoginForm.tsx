@@ -42,7 +42,6 @@ export default function LoginForm() {
         }; sameSite=Lax`;
       }
 
-      console.log("Login DATA", data);
       // Redirect to admin dashboard
       router.push("/dashboard");
     } catch (err) {

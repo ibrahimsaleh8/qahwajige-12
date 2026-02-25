@@ -1,5 +1,4 @@
 import HeroBackground from "./HeroBackground";
-
 import { HeroSectionData } from "@/lib/responseType";
 import HeroText from "./HeroText";
 import HeroStats from "./HeroStats";
@@ -14,15 +13,14 @@ export default function HeroSection({
 }: HeroSectionData & { aboutImage: string }) {
   return (
     <section
-      id="home"
-      dir="rtl"
+      id="main-section"
       className="relative min-h-screen overflow-hidden flex items-center">
       <HeroBackground />
 
-      <div className="relative z-10 container mx-auto px-6 pt-28 pb-16 lg:pt-0 lg:pb-0">
-        <div className="flex flex-col lg:flex-row items-center gap-14">
-          {/* TEXT (LCP lives here) */}
-          <div className="flex-1 text-center lg:text-right space-y-6">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16 lg:pt-0 lg:pb-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Content block — takes 7 cols on large */}
+          <div className="lg:col-span-7 flex flex-col justify-center text-center lg:text-right order-2 lg:order-1">
             <HeroText
               headline={headline ?? ""}
               subheadline={subheadline ?? ""}
@@ -31,8 +29,10 @@ export default function HeroSection({
             <HeroStats />
           </div>
 
-          {/* IMAGE (client-only) */}
-          <AboutImage imageUrl={aboutImage} />
+          {/* Image block — takes 5 cols */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-start order-1 lg:order-2">
+            <AboutImage imageUrl={aboutImage} />
+          </div>
         </div>
       </div>
     </section>
