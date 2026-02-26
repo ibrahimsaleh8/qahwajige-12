@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/#about-us", label: "من نحن" },
   { href: "/#our-services", label: "خدماتنا" },
   { href: "/#packages", label: "الباقات" },
-  { href: "/articles", label: "المقالات" },
+  { href: "/articles", label: "خدمات الضيافة" },
   { href: "/#contact-information", label: "اتصل بنا" },
 ];
 
