@@ -6,7 +6,7 @@ export const FetchProjectData = async () => {
 
   try {
     const res = await fetch(
-      `${APP_URL}/api/project/${CurrentProjectId}/main-data-with-keywords`,
+      `${APP_URL}/api/project/${CurrentProjectId}/main-data`,
     );
     data = (await res.json()) as ProjectContentResponse;
   } catch (error) {
@@ -105,6 +105,15 @@ export const FetchProjectData = async () => {
         address: "الرياض، المملكة العربية السعودية",
       },
       keywords: [],
+      customSections: [],
+      showContactSection: true,
+      socialMediaLinks: {
+        instagram: null,
+        facebook: null,
+        twitter: null,
+        tiktok: null,
+        youtube: null,
+      },
     };
   }
   return { data };

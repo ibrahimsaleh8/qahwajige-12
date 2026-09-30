@@ -6,17 +6,32 @@ import { Header } from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import PremiumPackagesSection from "@/components/PremiumPackagesSection";
-import { CurrentProjectId } from "@/lib/ProjectId";
+import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
 import RatingSection from "@/components/RatingSection";
 import WhyUsDescription from "@/components/WhyUsDescription";
 import EventsSection from "@/components/EventsSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
-import PreventCopy from "@/components/PreventCopy";
-import ShowKeywords from "@/components/ShowKeywords";
 import { FetchProjectData } from "@/lib/FetchProjectData";
+import HomeArticlesSection, {
+  HomeArticle,
+} from "@/components/components/HomeArticlesSection";
+import CustomSection from "@/components/components/CustomSection";
 
 export default async function HomePage() {
   const { data } = await FetchProjectData();
+  let homeArticles: HomeArticle[] = [];
+
+  try {
+    const articlesRes = await fetch(
+      `${APP_URL}/api/project/${CurrentProjectId}/articles/category/${encodeURIComponent("الصفحة-الرئيسية")}`,
+    );
+    if (articlesRes.ok) {
+      const articlesData = await articlesRes.json();
+      homeArticles = articlesData.data?.articles || [];
+    }
+  } catch (error) {
+    console.error("Failed to fetch home articles:", error);
+  }
 
   return (
     <div className="min-h-screen overflow-x-hidden">
@@ -32,6 +47,16 @@ export default async function HomePage() {
         {...data.services}
         gallery={data.gallery?.slice(3, 6) ?? []}
       />
+
+      {data.customSections &&
+        data.customSections.length > 0 &&
+        data.customSections.map((customSection, index) => (
+          <CustomSection
+            key={customSection.id}
+            {...customSection}
+            index={index}
+          />
+        ))}
       <EventsSection gallery={data.gallery?.slice(6, 9) ?? []} />
       <HowItWorksSection />
       <PremiumPackagesSection
@@ -47,9 +72,11 @@ export default async function HomePage() {
 
       <FAQSection />
 
-      <PreventCopy />
-      <ShowKeywords keywords={data.keywords ?? []} />
-      <ContactSection {...data.footer} whatsapp={data.hero?.whatsApp ?? ""} />
+      {data.showContactSection && (
+        <ContactSection {...data.footer} whatsapp={data.hero?.whatsApp ?? ""} />
+      )}
+
+      <HomeArticlesSection articles={homeArticles} />
     </div>
   );
 }

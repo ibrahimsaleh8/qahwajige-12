@@ -120,7 +120,7 @@ export default function ServicesForm({
         }
         Toast({ icon: "success", message: "تم حفظ الخدمة بنجاح" });
         setEditingServiceId(null);
-        await fetch("/api/revalidate-main-data");
+        await fetch("/api/revalidate-metatags");
       } else {
         const errorData = await res.json().catch(() => null);
         console.error("Error response:", errorData);
@@ -180,7 +180,7 @@ export default function ServicesForm({
           message: errorData?.message || "حدث خطأ أثناء الحفظ",
         });
       }
-      await fetch("/api/revalidate-main-data");
+      await fetch("/api/revalidate-metatags");
     } catch (error) {
       console.error("Error saving section data:", error);
       Toast({ icon: "error", message: "حدث خطأ أثناء الحفظ" });

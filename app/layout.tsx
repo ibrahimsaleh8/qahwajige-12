@@ -2,15 +2,16 @@
 import type { Metadata } from "next";
 import { Tajawal } from "next/font/google";
 import "./globals.css";
-import { APP_URL, CurrentProjectId, currentURL } from "@/lib/ProjectId";
+import { currentURL } from "@/lib/ProjectId";
 import Script from "next/script";
+import { fetchMetaData } from "@/lib/FetchMetaData";
 import { Analytics } from "@vercel/analytics/next";
 
 const tajawalFont = Tajawal({
   weight: ["200", "300", "400", "500", "700", "800", "900"],
   subsets: ["arabic"],
 });
-type MetaDataResponseDataType = {
+export type MetaDataResponseDataType = {
   title: string;
   description: string;
   keywords: string[];
@@ -19,17 +20,10 @@ type MetaDataResponseDataType = {
 
 export async function generateMetadata(): Promise<Metadata> {
   try {
-    const res = await fetch(
-      `${APP_URL}/api/project/${CurrentProjectId}/metadata`,
-      {
-        next: {
-          tags: ["metadata"],
-        },
-      },
-    );
-    const data: MetaDataResponseDataType = await res.json();
+    const data = await fetchMetaData();
 
     return {
+      metadataBase: new URL(currentURL),
       title: data.title,
       description: data.description,
       keywords: data.keywords,
@@ -53,9 +47,6 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       alternates: {
         canonical: currentURL,
-      },
-      verification: {
-        google: "cscr_OYovNv_gigHNevr7OlNG5Sscj-MfEk1NjOFg1Y",
       },
     };
   } catch (error) {

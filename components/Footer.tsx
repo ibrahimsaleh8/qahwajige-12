@@ -44,7 +44,7 @@ export default function Footer({
 
       {/* ── Main grid ── */}
       <div className="relative z-10 container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1 flex flex-col gap-5">
             <Link
@@ -98,50 +98,6 @@ export default function Footer({
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-
-          {/* Contact info */}
-          <div className="flex flex-col gap-5">
-            <p className="text-[#C7CBEF] font-bold text-base tracking-wide">
-              تواصل معنا
-            </p>
-            <ul className="space-y-4">
-              {address && (
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.5 w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 shrink-0">
-                    <MapPin className="w-4 h-4" />
-                  </span>
-                  <span className="text-white/70 text-sm leading-relaxed pt-1">
-                    {address}
-                  </span>
-                </li>
-              )}
-              {email && (
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.5 w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 shrink-0">
-                    <Mail className="w-4 h-4" />
-                  </span>
-                  <a
-                    href={`mailto:${email}`}
-                    className="text-white/70 text-sm leading-relaxed pt-1 hover:text-cyan-400 transition-colors duration-200 break-all">
-                    {email}
-                  </a>
-                </li>
-              )}
-              {phone && (
-                <li className="flex items-start gap-3">
-                  <span className="mt-0.5 w-8 h-8 rounded-xl bg-cyan-400/10 border border-cyan-400/20 flex items-center justify-center text-cyan-400 shrink-0">
-                    <Phone className="w-4 h-4" />
-                  </span>
-                  <a
-                    href={`tel:${phone}`}
-                    dir="ltr"
-                    className="text-white/70 text-sm leading-relaxed pt-1 hover:text-cyan-400 transition-colors duration-200">
-                    {phone}
-                  </a>
-                </li>
-              )}
             </ul>
           </div>
 

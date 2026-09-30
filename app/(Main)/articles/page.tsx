@@ -1,4 +1,5 @@
-import { APP_URL, CurrentProjectId } from "@/lib/ProjectId";
+import { APP_URL, CurrentProjectId, currentURL } from "@/lib/ProjectId";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -19,9 +20,31 @@ type GetArticlesResponse = {
   };
 };
 
+export const metadata: Metadata = {
+  title: "خدمات الضيافة و القهوة العربية | مقالات ونصائح الضيافة",
+  description:
+    "اكتشف أحدث المقالات حول القهوة العربية، أساليب الضيافة الأصيلة، تجهيز المناسبات، واختيار أفضل أنواع القهوة وأدوات التقديم لتقديم تجربة ضيافة مميزة.",
+  alternates: {
+    canonical: `${currentURL}/articles`,
+  },
+  openGraph: {
+    title: "خدمات الضيافة و القهوة العربية | مقالات ونصائح الضيافة",
+    description:
+      "اكتشف أحدث المقالات حول القهوة العربية، أساليب الضيافة الأصيلة، تجهيز المناسبات، واختيار أفضل أنواع القهوة وأدوات التقديم لتقديم تجربة ضيافة مميزة.",
+    url: `${currentURL}/articles`,
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "خدمات الضيافة و القهوة العربية | مقالات ونصائح الضيافة",
+    description:
+      "اكتشف أحدث المقالات حول القهوة العربية، أساليب الضيافة الأصيلة، تجهيز المناسبات، واختيار أفضل أنواع القهوة وأدوات التقديم لتقديم تجربة ضيافة مميزة.",
+  },
+};
+
 export default async function ArticlesPage() {
   const res = await fetch(
-    `${APP_URL}/api/project/${CurrentProjectId}/articles`,
+    `${APP_URL}/api/project/${CurrentProjectId}/articles/category/خدمات-الضيافة`,
   );
 
   if (!res.ok) {
@@ -48,10 +71,10 @@ export default async function ArticlesPage() {
           لا توجد مقالات متاحة حالياً.
         </p>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid md:gap-6 gap-3 grid-cols-2 lg:grid-cols-4">
           {articles.map((article) => (
             <Link
-              href={`/articles/${article.title.split(" ").join("-")}`}
+              href={`/${article.title.split(" ").join("-")}`}
               key={article.id}
               className="bg-card-background rounded-xl shadow-sm border border-white/10 overflow-hidden flex flex-col hover:shadow-md transition-shadow duration-200">
               {article.coverImage && (
@@ -65,13 +88,13 @@ export default async function ArticlesPage() {
                 </div>
               )}
 
-              <div className="p-4 flex flex-col flex-1 space-y-3">
-                <h2 className="text-lg font-semibold text-white line-clamp-2">
+              <div className="md:p-4 p-2 flex flex-col flex-1 space-y-3">
+                <h2 className="md:text-lg text-base font-semibold text-white line-clamp-2">
                   {article.title}
                 </h2>
 
                 {article.content && (
-                  <p className="text-sm text-white/60 line-clamp-3">
+                  <p className="md:text-sm text-xs text-white/60 line-clamp-3">
                     {article.content.replace(/<[^>]+>/g, "")}
                   </p>
                 )}
@@ -86,7 +109,7 @@ export default async function ArticlesPage() {
                   </span>
                 </div>
 
-                <p className="bg-white text-black w-fit px-3 py-2 rounded-md font-medium mr-auto">
+                <p className="bg-white text-xs text-black px-3 py-2 rounded-md font-bold text-center mr-auto w-full">
                   اقرأ المزيد
                 </p>
               </div>
